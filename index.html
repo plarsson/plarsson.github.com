@@ -11,7 +11,7 @@
             :root {
                 color-scheme: dark;
                 --bg: #050506;
-                --logo: #f4f1ea;
+                --logo: #fff7e8;
             }
 
             * {
@@ -30,16 +30,28 @@
                 min-height: 100vh;
                 min-height: 100svh;
                 min-height: 100dvh;
-                display: grid;
-                place-items: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 overflow: hidden;
                 background:
                     radial-gradient(
-                        circle at 50% 48%,
-                        rgba(255, 255, 255, 0.07),
-                        transparent 28rem
+                        circle at 50% 46%,
+                        rgba(255, 247, 232, 0.075),
+                        transparent 26rem
+                    ),
+                    radial-gradient(
+                        circle at 50% 72%,
+                        rgba(255, 247, 232, 0.025),
+                        transparent 18rem
                     ),
                     #050506;
+            }
+
+            .brand {
+                display: grid;
+                justify-items: center;
+                gap: clamp(1.4rem, 3vw, 2.1rem);
             }
 
             .logo {
@@ -49,8 +61,24 @@
                 height: auto;
                 color: var(--logo);
                 overflow: visible;
-                filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.07))
-                    drop-shadow(0 22px 58px rgba(0, 0, 0, 0.65));
+                shape-rendering: geometricPrecision;
+                filter: drop-shadow(0 0 16px rgba(255, 247, 232, 0.12))
+                    drop-shadow(0 18px 46px rgba(0, 0, 0, 0.58));
+            }
+
+            .name {
+                margin: 0;
+                color: rgba(255, 247, 232, 0.62);
+                font:
+                    500 clamp(0.72rem, 1.3vw, 0.92rem) / 1.1 "Avenir Next",
+                    "Helvetica Neue",
+                    sans-serif;
+                letter-spacing: 0.34em;
+                text-transform: uppercase;
+                text-indent: 0.34em;
+                opacity: 0;
+                transform: translateY(0.35rem);
+                animation: name-in 700ms ease-out 1280ms forwards;
             }
 
             .part {
@@ -106,6 +134,13 @@
                 }
             }
 
+            @keyframes name-in {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
             @media (max-width: 600px) {
                 .logo {
                     width: 80vw;
@@ -118,34 +153,43 @@
                     animation: none;
                     opacity: 1;
                 }
+
+                .name {
+                    animation: none;
+                    opacity: 1;
+                    transform: none;
+                }
             }
         </style>
     </head>
     <body>
-        <svg
-            class="logo"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="45 30 140 120"
-            role="img"
-            aria-label="PLN logo"
-        >
-            <g class="part p-stem">
-                <line x1="60" y1="70" x2="60" y2="140" />
-            </g>
-            <g class="part p-arc">
-                <path
-                    d="M 75 70 C 86.529 70 93.737 86.666 87.971 100 C 85.295 106.188 80.351 110 75 110"
-                />
-            </g>
-            <g class="part l-stem">
-                <line x1="115" y1="40" x2="115" y2="110" />
-            </g>
-            <g class="part n-arc">
-                <path
-                    d="M 150.133 57.5 C 161.662 57.5 168.87 74.166 163.104 87.5 C 160.428 93.688 155.484 97.5 150.133 97.5"
-                    transform="matrix(0, -1, 1, 0, 82.499674410407, 235.133162794796)"
-                />
-            </g>
-        </svg>
+        <main class="brand" aria-label="PLN Development">
+            <svg
+                class="logo"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="45 30 140 120"
+                role="img"
+                aria-label="PLN logo"
+            >
+                <g class="part p-stem">
+                    <line x1="60" y1="70" x2="60" y2="140" />
+                </g>
+                <g class="part p-arc">
+                    <path
+                        d="M 75 70 C 86.529 70 93.737 86.666 87.971 100 C 85.295 106.188 80.351 110 75 110"
+                    />
+                </g>
+                <g class="part l-stem">
+                    <line x1="115" y1="40" x2="115" y2="110" />
+                </g>
+                <g class="part n-arc">
+                    <path
+                        d="M 150.133 57.5 C 161.662 57.5 168.87 74.166 163.104 87.5 C 160.428 93.688 155.484 97.5 150.133 97.5"
+                        transform="matrix(0, -1, 1, 0, 82.499674410407, 235.133162794796)"
+                    />
+                </g>
+            </svg>
+            <p class="name">PLN Development</p>
+        </main>
     </body>
 </html>
