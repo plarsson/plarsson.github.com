@@ -48,6 +48,7 @@
                 max-width: 86vw;
                 height: auto;
                 color: var(--logo);
+                overflow: visible;
                 filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.07))
                     drop-shadow(0 22px 58px rgba(0, 0, 0, 0.65));
             }
@@ -128,16 +129,23 @@
             role="img"
             aria-label="PLN logo"
         >
-            <line class="part p-stem" x1="60" y1="70" x2="60" y2="140" />
-            <path
-                class="part p-arc"
-                d="M 75 70 C 86.529 70 93.737 86.666 87.971 100 C 85.295 106.188 80.351 110 75 110"
-            />
-            <line class="part l-stem" x1="115" y1="40" x2="115" y2="110" />
-            <path
-                class="part n-arc"
-                d="M 135 85 C 135 73.471 151.666 66.263 165 72.029 C 171.188 74.705 175 79.649 175 85"
-            />
+            <g class="part p-stem">
+                <line x1="60" y1="70" x2="60" y2="140" />
+            </g>
+            <g class="part p-arc">
+                <path
+                    d="M 75 70 C 86.529 70 93.737 86.666 87.971 100 C 85.295 106.188 80.351 110 75 110"
+                />
+            </g>
+            <g class="part l-stem">
+                <line x1="115" y1="40" x2="115" y2="110" />
+            </g>
+            <g class="part n-arc">
+                <path
+                    d="M 150.133 57.5 C 161.662 57.5 168.87 74.166 163.104 87.5 C 160.428 93.688 155.484 97.5 150.133 97.5"
+                    transform="matrix(0, -1, 1, 0, 82.499674410407, 235.133162794796)"
+                />
+            </g>
         </svg>
     </body>
 </html>
