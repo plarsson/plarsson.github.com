@@ -2,155 +2,142 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         <title>PLN</title>
         <style>
             :root {
                 color-scheme: dark;
-                --bg: #050507;
-                --fg: #f5f3ee;
-                --muted: #9a9690;
+                --bg: #050506;
+                --logo: #f4f1ea;
             }
 
             * {
                 box-sizing: border-box;
             }
 
+            html,
             body {
                 margin: 0;
+                width: 100%;
+                min-height: 100%;
+                background: var(--bg);
+            }
+
+            body {
                 min-height: 100vh;
+                min-height: 100svh;
+                min-height: 100dvh;
                 display: grid;
                 place-items: center;
+                overflow: hidden;
                 background:
                     radial-gradient(
-                        circle at 50% 42%,
-                        rgba(255, 255, 255, 0.08),
-                        transparent 32rem
-                    ),
-                    radial-gradient(
-                        circle at 50% 100%,
-                        rgba(255, 255, 255, 0.045),
+                        circle at 50% 48%,
+                        rgba(255, 255, 255, 0.07),
                         transparent 28rem
                     ),
-                    var(--bg);
-                color: var(--fg);
-                font-family:
-                    Inter,
-                    ui-sans-serif,
-                    system-ui,
-                    -apple-system,
-                    BlinkMacSystemFont,
-                    "Segoe UI",
-                    sans-serif;
-                overflow: hidden;
+                    #050506;
             }
 
-            main {
-                width: min(92vw, 780px);
-                min-height: 70vh;
-                display: grid;
-                place-items: center;
-                text-align: center;
-                padding: 48px 24px;
-            }
-
-            .logo-wrap {
-                display: grid;
-                place-items: center;
-                width: clamp(220px, 46vw, 420px);
-                aspect-ratio: 420 / 180;
-                color: var(--fg);
-                filter: drop-shadow(0 24px 60px rgba(255, 255, 255, 0.09));
-                animation: settle 0.9s ease-out both;
-            }
-
-            .logo-wrap svg {
-                width: 100%;
-                height: auto;
+            .logo {
                 display: block;
+                width: min(76vw, 640px);
+                max-width: 86vw;
+                height: auto;
+                color: var(--logo);
+                filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.07))
+                    drop-shadow(0 22px 58px rgba(0, 0, 0, 0.65));
+            }
+
+            .part {
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 9;
+                stroke-linecap: round;
+                transform-box: fill-box;
+                transform-origin: center;
+                opacity: 0;
+                animation: settle 1150ms cubic-bezier(0.18, 0.9, 0.22, 1)
+                    forwards;
+            }
+
+            .p-stem {
+                --x: -80px;
+                --y: -42px;
+                --r: -32deg;
+                animation-delay: 80ms;
+            }
+            .p-arc {
+                --x: 70px;
+                --y: -52px;
+                --r: 38deg;
+                animation-delay: 180ms;
+            }
+            .l-stem {
+                --x: -36px;
+                --y: 76px;
+                --r: 28deg;
+                animation-delay: 280ms;
+            }
+            .n-arc {
+                --x: 88px;
+                --y: 68px;
+                --r: -54deg;
+                animation-delay: 380ms;
             }
 
             @keyframes settle {
-                from {
+                0% {
                     opacity: 0;
-                    transform: translateY(18px) scale(0.96);
-                    filter: blur(8px)
-                        drop-shadow(0 24px 60px rgba(255, 255, 255, 0.09));
+                    transform: translate(var(--x), var(--y)) rotate(var(--r))
+                        scale(0.74);
                 }
-                to {
+                62% {
                     opacity: 1;
-                    transform: translateY(0) scale(1);
-                    filter: blur(0)
-                        drop-shadow(0 24px 60px rgba(255, 255, 255, 0.09));
+                    transform: translate(0, 0) rotate(0deg) scale(1.045);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate(0, 0) rotate(0deg) scale(1);
+                }
+            }
+
+            @media (max-width: 600px) {
+                .logo {
+                    width: 80vw;
+                    max-width: 80vw;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .part {
+                    animation: none;
+                    opacity: 1;
                 }
             }
         </style>
     </head>
     <body>
-        <main aria-label="PLN landing page">
-            <section>
-                <div class="logo-wrap" aria-label="PLN logo">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 420 180"
-                        width="420"
-                        height="180"
-                        xmlns:bx="https://boxy-svg.com"
-                    >
-                        <defs>
-                            <path
-                                id="pln-arc"
-                                d="M 0 25 A 55 55 0 0 1 0 135"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="18"
-                                stroke-linecap="round"
-                            />
-                            <bx:grid
-                                x="0"
-                                y="0"
-                                width="5"
-                                height="5"
-                                divisions="1"
-                            />
-                        </defs>
-                        <line
-                            x1="60"
-                            y1="70"
-                            x2="60"
-                            y2="140"
-                            stroke="currentColor"
-                            style="stroke-linecap: round; stroke-width: 9px"
-                        />
-                        <path
-                            d="M 75 70 C 86.529 70 93.737 86.666 87.971 100 C 85.295 106.188 80.351 110 75 110"
-                            fill="none"
-                            stroke="currentColor"
-                            style="stroke-linecap: round; stroke-width: 9px"
-                        />
-                        <line
-                            x1="115"
-                            y1="40"
-                            x2="115"
-                            y2="110"
-                            stroke="currentColor"
-                            style="stroke-linecap: round; stroke-width: 9px"
-                        />
-                        <path
-                            d="M 150.133 57.5 C 161.662 57.5 168.87 74.166 163.104 87.5 C 160.428 93.688 155.484 97.5 150.133 97.5"
-                            fill="none"
-                            stroke="currentColor"
-                            style="
-                                stroke-linecap: round;
-                                stroke-width: 9px;
-                                transform-box: fill-box;
-                                transform-origin: 50% 50%;
-                            "
-                            transform="matrix(0, -1, 1, 0, 0.000004, 0.000005)"
-                        />
-                    </svg>
-                </div>
-            </section>
-        </main>
+        <svg
+            class="logo"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="45 30 140 120"
+            role="img"
+            aria-label="PLN logo"
+        >
+            <line class="part p-stem" x1="60" y1="70" x2="60" y2="140" />
+            <path
+                class="part p-arc"
+                d="M 75 70 C 86.529 70 93.737 86.666 87.971 100 C 85.295 106.188 80.351 110 75 110"
+            />
+            <line class="part l-stem" x1="115" y1="40" x2="115" y2="110" />
+            <path
+                class="part n-arc"
+                d="M 135 85 C 135 73.471 151.666 66.263 165 72.029 C 171.188 74.705 175 79.649 175 85"
+            />
+        </svg>
     </body>
 </html>
